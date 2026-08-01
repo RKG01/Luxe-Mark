@@ -1,7 +1,10 @@
 import axios, { AxiosError } from 'axios';
 import { ApiError } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL
+  || (import.meta.env.DEV
+    ? '/api/v1'
+    : 'https://ecommerce-08h7.onrender.com/api/v1');
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
